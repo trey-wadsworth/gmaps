@@ -10,6 +10,33 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function(){
+
+
+
+	function initialize() {
+		var myCoords = new google.maps.LatLng(33.78571, -84.421508);
+
+		var mapOptions = {
+			center: myCoords,
+			zoom: 14,
+			scrollwheel: false,
+		};
+
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+		var marker = new google.maps.Marker({
+			position: myCoords, 
+			map: map,
+			title: 'Strongbox West',
+		});
+
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+});
